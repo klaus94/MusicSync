@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    android:orientation="vertical"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    tools:context="com.example.dominik.musicsync.MainActivity"
+    tools:showIn="@layout/activity_main">
+
+    <Button
+        android:id="@+id/btn_1"
+        android:text="@string/btn_1_text"
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:onClick="onButton1Clicked" />
+    <TextView
+        android:id="@+id/txtSource"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:text="@string/txtSource"/>
+    <Button
+        android:id="@+id/btn_2"
+        android:text="@string/btn_2_text"
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:onClick="onButton2Clicked"/>
+    <TextView
+        android:id="@+id/txtTarget"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:text="@string/txtTarget"/>
+    <Button
+        android:id="@+id/btn_3"
+        android:text="@string/btn_start"
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:onClick="onButtonStartClicked"/>
+</LinearLayout>

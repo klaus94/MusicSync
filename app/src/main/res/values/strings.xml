@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">MusicSync</string>
+    <string name="action_settings">Settings</string>
+    <string name="btn_1_text">Select Source-Folder</string>
+    <string name="btn_2_text">Select Target-Folder</string>
+    <string name="btn_start">START</string>
+    <string name="txtSource">source location: </string>
+    <string name="txtTarget">target location: </string>
+</resources>
