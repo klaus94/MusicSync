@@ -1,9 +1,13 @@
 package com.example.dominik.musicsync;
 
+import android.Manifest;
 import android.app.Activity;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.net.Uri;
 import android.os.Bundle;
+import android.support.v4.app.ActivityCompat;
+import android.support.v4.content.ContextCompat;
 import android.support.v4.provider.DocumentFile;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
@@ -20,6 +24,7 @@ public class MainActivity extends AppCompatActivity {
 
     private final int REQUEST_CODE_SOURCE = 1;
     private final int REQUEST_CODE_TARGET = 2;
+    private final int REQUEST_WRITE_PERMISSION = 3;
 
     private Uri targetURI;
     private Uri sourceURI;
@@ -31,6 +36,10 @@ public class MainActivity extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
+        boolean hasPermission = (ContextCompat.checkSelfPermission(this, Manifest.permission.WRITE_EXTERNAL_STORAGE) == PackageManager.PERMISSION_GRANTED);
+        if (!hasPermission) {
+            ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE},REQUEST_WRITE_PERMISSION);
+        }
 
 //        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
 //        fab.setOnClickListener(new View.OnClickListener() {
@@ -123,6 +132,25 @@ public class MainActivity extends AppCompatActivity {
             }
         }
     }
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, String[] permissions, int[] grantResults) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+        switch (requestCode)
+        {
+            case REQUEST_WRITE_PERMISSION: {
+                if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED)
+                {
+                    //reload my activity with permission granted or use the features what required the permission
+                    // ...
+                } else
+                {
+                    Toast.makeText(this, "The app was not allowed to write to your storage. Hence, it cannot function properly. Please consider granting it this permission", Toast.LENGTH_LONG).show();
+                }
+            }
+        }
+
+    })
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data)
